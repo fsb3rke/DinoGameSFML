@@ -6,6 +6,12 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DD6C8A73308FDFBF002EC2DF /* libsfml-system.3.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6C8A70308FDFBF002EC2DF /* libsfml-system.3.0.2.dylib */; };
+		DD6C8A74308FDFBF002EC2DF /* libsfml-graphics.3.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6C8A71308FDFBF002EC2DF /* libsfml-graphics.3.0.2.dylib */; };
+		DD6C8A75308FDFBF002EC2DF /* libsfml-window.3.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6C8A72308FDFBF002EC2DF /* libsfml-window.3.0.2.dylib */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		DD6C8A63308FDED7002EC2DF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -19,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		DD6C8A65308FDED7002EC2DF /* DinoGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DinoGame; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD6C8A70308FDFBF002EC2DF /* libsfml-system.3.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-system.3.0.2.dylib"; path = "../../../../../opt/homebrew/lib/libsfml-system.3.0.2.dylib"; sourceTree = "<group>"; };
+		DD6C8A71308FDFBF002EC2DF /* libsfml-graphics.3.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.3.0.2.dylib"; path = "../../../../../opt/homebrew/lib/libsfml-graphics.3.0.2.dylib"; sourceTree = "<group>"; };
+		DD6C8A72308FDFBF002EC2DF /* libsfml-window.3.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-window.3.0.2.dylib"; path = "../../../../../opt/homebrew/lib/libsfml-window.3.0.2.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +42,9 @@
 		DD6C8A62308FDED7002EC2DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				DD6C8A73308FDFBF002EC2DF /* libsfml-system.3.0.2.dylib in Frameworks */,
+				DD6C8A74308FDFBF002EC2DF /* libsfml-graphics.3.0.2.dylib in Frameworks */,
+				DD6C8A75308FDFBF002EC2DF /* libsfml-window.3.0.2.dylib in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -42,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				DD6C8A67308FDED7002EC2DF /* DinoGame */,
+				DD6C8A6F308FDFBF002EC2DF /* Frameworks */,
 				DD6C8A66308FDED7002EC2DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +65,16 @@
 				DD6C8A65308FDED7002EC2DF /* DinoGame */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DD6C8A6F308FDFBF002EC2DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD6C8A71308FDFBF002EC2DF /* libsfml-graphics.3.0.2.dylib */,
+				DD6C8A70308FDFBF002EC2DF /* libsfml-system.3.0.2.dylib */,
+				DD6C8A72308FDFBF002EC2DF /* libsfml-window.3.0.2.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +259,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LD_RUNPATH_SEARCH_PATHS = /opt/homebrew/lib;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -244,6 +270,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LD_RUNPATH_SEARCH_PATHS = /opt/homebrew/lib;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
