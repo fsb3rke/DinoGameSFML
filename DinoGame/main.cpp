@@ -6,8 +6,8 @@
 //
 
 #include <SFML/Graphics.hpp>
-#include <algorithm>
 #include <cmath>
+#include <string>
 #include <iostream>
 
 constexpr unsigned int windowWidth = 800;
@@ -51,6 +51,9 @@ int main()
     bool onGround = true;
     bool jumpRequested = false;
     bool gameOver = false;
+    bool cactusPassed = false;
+    
+    int score = 0;
     
     float jumpStartY = groundY - dinoHeight;
     float flightTime = 0.f;
@@ -66,9 +69,37 @@ int main()
                 window.close();
             
             if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                if (keyPressed->code == sf::Keyboard::Key::Space)
-                    if (!gameOver)
+                if (keyPressed->code == sf::Keyboard::Key::Space) {
+                    if (!gameOver) {
                         jumpRequested = true;
+                    }
+                }
+                    
+                else if (keyPressed->code == sf::Keyboard::Key::R && gameOver) {
+                    dino.setPosition({
+                           100.f,
+                           groundY - dinoHeight
+                       });
+
+                       
+                    cactus.setPosition({
+                        static_cast<float>(windowWidth),
+                        groundY - cactus.getSize().y
+                    });
+
+                       
+                    onGround = true;
+                    jumpRequested = false;
+                    flightTime = 0.f;
+                    jumpStartY = groundY - dinoHeight;
+
+                       
+                    score = 0;
+                    cactusPassed = false;
+                    gameOver = false;
+
+                    clock.restart();
+                }
             }
         }
         
@@ -102,6 +133,14 @@ int main()
             
             if (cactus.getPosition().x + cactus.getSize().x < 0.f) {
                 cactus.setPosition({static_cast<float>(windowWidth), groundY - cactus.getSize().y});
+                cactusPassed = false;
+            }
+            
+            if (!cactusPassed && cactus.getPosition().x + cactus.getSize().x < dino.getPosition().x) {
+                score++;
+                cactusPassed = true;
+                
+                std::cout << "Score: " << score << std::endl;
             }
             
             if (dino.getGlobalBounds().findIntersection(cactus.getGlobalBounds())) {
@@ -127,6 +166,7 @@ int main()
             window.draw(marker);
         }
         
+        window.setTitle("DinoGame | Score: " + std::to_string(score));
         window.display();
     }
 }
